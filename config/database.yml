@@ -17,7 +17,7 @@ development:
   encoding: unicode
   database: imggit_development
   pool: 5
-  username: imggit
+  username: postgres
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -43,13 +43,5 @@ test:
   encoding: unicode
   database: imggit_test
   pool: 5
-  username: imggit
-  password:
-
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: imggit_production
-  pool: 5
-  username: imggit
+  username: postgres
   password:
