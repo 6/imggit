@@ -60,6 +60,9 @@ GEM
       railties (>= 3.1, < 4.1)
     hike (1.2.3)
     i18n (0.6.1)
+    imgur_url (0.2)
+      activesupport
+      andand
     journey (1.0.4)
     jquery-rails (3.0.1)
       railties (>= 3.0, < 5.0)
@@ -160,6 +163,7 @@ DEPENDENCIES
   database_cleaner
   factory_girl_rails
   haml-rails
+  imgur_url
   jquery-rails
   newrelic_rpm
   pg

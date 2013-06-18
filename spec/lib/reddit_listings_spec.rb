@@ -11,11 +11,11 @@ describe RedditListings do
 
   describe "#listings" do
     it "returns an array of listings hashes" do
-      subject.listings.size.should == 25
+      subject.listings.size.should == 19
       subject.listings.each do |listing|
         listing[:title].should_not be_empty
-        listing[:url].should match(%r{^http://})
-        listing[:url].should include("imgur.com")
+        listing[:url].should be_a(ImgurUrl::Image)
+        listing[:url].id.should_not be_empty
       end
     end
   end

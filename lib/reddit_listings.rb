@@ -10,11 +10,14 @@ class RedditListings
 
   def listings
     @pages[@current_page][:listings] ||= json_response['data']['children'].map do |listing|
-      {
-        title: listing['data']['title'],
-        url: listing['data']['url'],
-      }
-    end
+      begin
+        {
+          title: listing['data']['title'],
+          url: ImgurUrl::Image.new(listing['data']['url']),
+        }
+      rescue ImgurUrl::Exception => e
+      end
+    end.delete_if(&:nil?)
   end
 
   def next_page!
