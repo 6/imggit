@@ -32,7 +32,7 @@ class RedditListings
   def json_response
     return @pages[@current_page][:json_response]  if @pages[@current_page][:json_response]
 
-    response = RestClient.get "http://reddit.com/domain/#{@domain}/#{@sort}/.json?after=#{@current_page}", :user_agent => ENV['USER_AGENT'] || 'http://github.com/6'
+    response = RestClient.get "http://reddit.com/domain/#{@domain}/#{@sort}/.json?after=#{@current_page}", :user_agent => ENV['USER_AGENT'] || 'imggit - http://github.com/6/imggit'
 
     parsed_response = JSON.parse(response)
     @next_page = parsed_response['data']['after']
