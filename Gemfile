@@ -9,6 +9,7 @@ gem 'haml-rails'
 gem 'andand'
 gem 'rest-client'
 gem 'imgur_url'
+gem 'airbrake'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
