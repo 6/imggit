@@ -22,7 +22,7 @@ group :development do
   gem 'rspec-nc'
 end
 
-group :development, :test do
+group :test do
   gem 'database_cleaner'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
