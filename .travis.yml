@@ -3,6 +3,8 @@ rvm:
   - 1.9.3
 env:
   - DB=postgresql
+install:
+  - bundle install --without darwin
 script:
   - RAILS_ENV=test bundle exec rake --trace db:migrate
   - bundle exec rspec
