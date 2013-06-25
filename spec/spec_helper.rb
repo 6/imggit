@@ -6,6 +6,7 @@ require 'rspec/autorun'
 require 'webmock/rspec'
 require 'database_cleaner'
 require 'factory_girl_rails'
+require 'sucker_punch/testing/inline'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
@@ -18,8 +19,13 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.use_transactional_examples = false
 
-  config.before(:suite) do
+  config.before(:each) do
     DatabaseCleaner.strategy = :transaction
+  end
+
+  # Clean up all worker specs with truncation
+  config.before(:each, :worker => true) do
+    DatabaseCleaner.strategy = :truncation
   end
 
   config.before(:each) do
