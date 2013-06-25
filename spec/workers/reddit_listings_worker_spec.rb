@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe RedditListingsWorker, worker: true do
-  describe "#perform", :focus do
+  describe "#perform" do
     let(:listings) do
       [
         {
