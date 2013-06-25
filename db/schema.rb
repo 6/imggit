@@ -11,14 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130616021324) do
+ActiveRecord::Schema.define(:version => 20130625071233) do
 
   create_table "images", :force => true do |t|
-    t.string   "type",       :null => false
-    t.string   "remote_id",  :null => false
+    t.string   "type",                          :null => false
+    t.string   "remote_id",                     :null => false
     t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "nsfw",       :default => false, :null => false
   end
 
   add_index "images", ["type", "remote_id"], :name => "index_images_on_type_and_remote_id", :unique => true
