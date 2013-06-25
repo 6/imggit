@@ -16,6 +16,7 @@ describe RedditListings do
         listing[:title].should_not be_empty
         listing[:url].should be_a(ImgurUrl::Image)
         listing[:url].id.should_not be_empty
+        (listing[:nsfw].is_a?(TrueClass) || listing[:nsfw].is_a?(FalseClass)).should be_true
       end
     end
   end

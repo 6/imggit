@@ -10,6 +10,7 @@ class RedditListingsWorker
         scraper.listings.each do |listing|
           image = ImgurImage.find_or_initialize_by_remote_id(listing[:url].id)
           image.title = listing[:title]
+          image.nsfw = listing[:nsfw]
           image.save!
         end
         scraper.next_page!

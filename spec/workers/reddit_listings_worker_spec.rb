@@ -7,14 +7,17 @@ describe RedditListingsWorker, worker: true do
         {
           title: 'Image 1',
           url: ImgurUrl::Image.new('http://imgur.com/abcde'),
+          nsfw: false,
         },
         {
           title: 'Image 2',
           url: ImgurUrl::Image.new('http://imgur.com/cdefg'),
+          nsfw: true,
         },
         {
           title: 'Image 3',
           url: ImgurUrl::Image.new('http://imgur.com/fghij'),
+          nsfw: false,
         },
       ]
     end
@@ -35,9 +38,18 @@ describe RedditListingsWorker, worker: true do
     it "sets the expected title and remote_id values on each created model" do
       go!
 
-      ImgurImage.find_by_remote_id("abcde").title.should == 'Image 1'
-      ImgurImage.find_by_remote_id("cdefg").title.should == 'Image 2'
-      ImgurImage.find_by_remote_id("fghij").title.should == 'Image 3'
+      ImgurImage.find_by_remote_id("abcde").tap do |i|
+        i.title.should == 'Image 1'
+        i.should_not be_nsfw
+      end
+      ImgurImage.find_by_remote_id("cdefg").tap do |i|
+        i.title.should == 'Image 2'
+        i.should be_nsfw
+      end
+      ImgurImage.find_by_remote_id("fghij").tap do |i|
+        i.title.should == 'Image 3'
+        i.should_not be_nsfw
+      end
     end
 
     it "does not create duplicate models" do
