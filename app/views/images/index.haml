@@ -1,1 +1,5 @@
-images (todo)
+%ol
+  - @images.each do |image|
+    %li
+      %a{:href => image.remote_permalink, :target => "_blank"}
+        %img{:src => image.url(:box), :alt => image.title}
