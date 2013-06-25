@@ -1,0 +1,25 @@
+.images-index {
+  $thumbnail-length: 80px;
+  .image-container {
+    position: relative;
+    width: $thumbnail-length;
+    height: $thumbnail-length;
+  }
+  .image-nsfw-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: #ddd;
+    line-height: $thumbnail-length;
+    text-align: center;
+  }
+  .image-container:hover .image-nsfw-overlay {
+    display: none;
+  }
+  .image-thumb {
+    width: $thumbnail-length;
+    height: $thumbnail-length;
+  }
+}

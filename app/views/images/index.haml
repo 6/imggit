@@ -2,6 +2,6 @@
   - @images.each do |image|
     %li.image-container
       - if image.nsfw?
-        .image-nsfw-overlay
+        .image-nsfw-overlay NSFW
       %a.image-link{:href => image.remote_permalink, :target => "_blank"}
         %img.image-thumb{:src => image.url(:box), :alt => image.title}
