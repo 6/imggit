@@ -1,5 +1,7 @@
-%ol
+%ol.images-container
   - @images.each do |image|
-    %li
-      %a{:href => image.remote_permalink, :target => "_blank"}
-        %img{:src => image.url(:box), :alt => image.title}
+    %li.image-container
+      - if image.nsfw?
+        .image-nsfw-overlay
+      %a.image-link{:href => image.remote_permalink, :target => "_blank"}
+        %img.image-thumb{:src => image.url(:box), :alt => image.title}
