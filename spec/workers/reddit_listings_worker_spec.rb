@@ -59,8 +59,8 @@ describe RedditListingsWorker, worker: true do
       ImgurImage.find_by_remote_id(listings.first[:url].id).should == existing_image
     end
 
-    it "paginates for 3 pages" do
-      RedditListings.any_instance.should_receive(:next_page!).exactly(3).times
+    it "paginates for 5 pages" do
+      RedditListings.any_instance.should_receive(:next_page!).exactly(5).times
       go!
     end
   end
