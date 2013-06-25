@@ -20,6 +20,9 @@ end
 
 group :development do
   gem 'quiet_assets'
+end
+
+group :darwin do
   gem 'rspec-nc'
 end
 
