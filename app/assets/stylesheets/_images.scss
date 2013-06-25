@@ -1,14 +1,14 @@
 .images-index {
   $thumbnail-length: 80px;
   .images-container {
-    margin: 8px;
+    margin: 12px;
   }
   .image-container {
     position: relative;
     float: left;
     width: $thumbnail-length;
     height: $thumbnail-length;
-    margin: 8px;
+    margin: 12px;
   }
   .image-nsfw-overlay {
     position: absolute;
