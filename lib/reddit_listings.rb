@@ -10,11 +10,12 @@ class RedditListings
 
   def listings
     @pages[@current_page][:listings] ||= json_response['data']['children'].map do |listing|
+      data = listing['data']
       begin
         {
-          title: listing['data']['title'],
-          url: ImgurUrl::Image.new(listing['data']['url']),
-          nsfw: listing['data']['over_18'],
+          title: data['title'],
+          url: ImgurUrl::Image.new(data['url']),
+          nsfw: data['over_18'],
         }
       rescue ImgurUrl::Exception
       end
