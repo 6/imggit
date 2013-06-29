@@ -8,16 +8,19 @@ describe RedditListingsWorker, worker: true do
           title: 'Image 1',
           url: ImgurUrl::Image.new('http://imgur.com/abcde'),
           nsfw: false,
+          subreddit: 'DIY',
         },
         {
           title: 'Image 2',
           url: ImgurUrl::Image.new('http://imgur.com/cdefg'),
           nsfw: true,
+          subreddit: 'buildapc',
         },
         {
           title: 'Image 3',
           url: ImgurUrl::Image.new('http://imgur.com/fghij'),
           nsfw: false,
+          subreddit: 'LifeProTips',
         },
       ]
     end
@@ -35,20 +38,23 @@ describe RedditListingsWorker, worker: true do
       expect { go! }.to change { ImgurImage.count }.by(listings.size)
     end
 
-    it "sets the expected title and remote_id values on each created model" do
+    it "sets the expected title and remote_id values on each created model and creates a tag for the subreddit" do
       go!
 
       ImgurImage.find_by_remote_id("abcde").tap do |i|
         i.title.should == 'Image 1'
         i.should_not be_nsfw
+        i.tags.map(&:text).should == ['DIY']
       end
       ImgurImage.find_by_remote_id("cdefg").tap do |i|
         i.title.should == 'Image 2'
         i.should be_nsfw
+        i.tags.map(&:text).should == ['buildapc']
       end
       ImgurImage.find_by_remote_id("fghij").tap do |i|
         i.title.should == 'Image 3'
         i.should_not be_nsfw
+        i.tags.map(&:text).should == ['LifeProTips']
       end
     end
 
