@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130625071233) do
+ActiveRecord::Schema.define(:version => 20130629062330) do
 
   create_table "images", :force => true do |t|
     t.string   "type",                          :null => false
@@ -23,5 +23,12 @@ ActiveRecord::Schema.define(:version => 20130625071233) do
   end
 
   add_index "images", ["type", "remote_id"], :name => "index_images_on_type_and_remote_id", :unique => true
+
+  create_table "tags", :force => true do |t|
+    t.integer  "image_id",   :null => false
+    t.string   "text",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end

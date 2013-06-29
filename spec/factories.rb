@@ -7,4 +7,9 @@ FactoryGirl.define do
   factory :imgur_image do
     sequence(:remote_id) { |n| "image#{n}" }
   end
+
+  factory :tag do
+    image { FactoryGirl.build(:imgur_image) }
+    sequence(:text) { |n| "tag#{n}" }
+  end
 end
