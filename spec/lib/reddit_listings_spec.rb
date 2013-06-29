@@ -13,10 +13,11 @@ describe RedditListings do
     it "returns an array of listings hashes" do
       subject.listings.size.should == 19
       subject.listings.each do |listing|
-        listing[:title].should_not be_empty
+        listing[:title].should be_present
         listing[:url].should be_a(ImgurUrl::Image)
         listing[:url].id.should_not be_empty
         (listing[:nsfw].is_a?(TrueClass) || listing[:nsfw].is_a?(FalseClass)).should be_true
+        listing[:subreddit].should be_present
       end
     end
   end

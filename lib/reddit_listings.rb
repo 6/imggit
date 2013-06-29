@@ -16,6 +16,7 @@ class RedditListings
           title: data['title'],
           url: ImgurUrl::Image.new(data['url']),
           nsfw: data['over_18'],
+          subreddit: data['subreddit'],
         }
       rescue ImgurUrl::Exception
       end
