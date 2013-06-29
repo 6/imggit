@@ -16,7 +16,7 @@ class RedditListings
           url: ImgurUrl::Image.new(listing['data']['url']),
           nsfw: listing['data']['over_18'],
         }
-      rescue ImgurUrl::Exception => e
+      rescue ImgurUrl::Exception
       end
     end.delete_if(&:nil?)
   end
